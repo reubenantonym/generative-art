@@ -1,4 +1,5 @@
 import canvasSketch from "canvas-sketch";
+import { lerp } from "canvas-sketch-util/math";
 
 const settings = {
   dimensions: [2048, 2048],
@@ -7,7 +8,7 @@ const settings = {
 const sketch = () => {
   const createGrid = () => {
     const points = [];
-    const count = 1;
+    const count = 5;
 
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -31,7 +32,7 @@ const sketch = () => {
 
       context.beginPath();
       context.arc(x, y, 200, 0, Math.PI * 2, false);
-      context.strokeStyle = "blue";
+      context.strokeStyle = "black";
       context.lineWidth = 10;
       context.stroke();
     });
