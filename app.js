@@ -8,7 +8,7 @@ const settings = {
 const sketch = () => {
   const createGrid = () => {
     const points = [];
-    const count = 5;
+    const count = 20; ///Change this number for different design.
 
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -21,19 +21,29 @@ const sketch = () => {
   };
 
   const points = createGrid();
+  const margin = 300;
 
   return ({ context, width, height }) => {
     context.fillStyle = "white";
     context.fillRect(0, 0, width, height);
 
     points.forEach(([u, v]) => {
-      const x = u * width;
-      const y = v * height;
+      // const x = u * width;
+      // const y = v * height;
+      const x = lerp(margin, width - margin, u);
+      const y = lerp(margin, height - margin, v);
 
       context.beginPath();
-      context.arc(x, y, 200, 0, Math.PI * 2, false);
+      context.arc(
+        x,
+        y,
+        10 /*change this number to reduce the size of the circles*/,
+        0,
+        Math.PI * 2,
+        false
+      );
       context.strokeStyle = "black";
-      context.lineWidth = 10;
+      context.lineWidth = 30; //Change this number to increase or decrease width size of your design.
       context.stroke();
     });
   };
