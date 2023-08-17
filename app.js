@@ -1,5 +1,6 @@
 import canvasSketch from "canvas-sketch";
 import { lerp } from "canvas-sketch-util/math";
+import random from "canvas-sketch-util/random";
 
 const settings = {
   dimensions: [2048, 2048],
@@ -8,7 +9,7 @@ const settings = {
 const sketch = () => {
   const createGrid = () => {
     const points = [];
-    const count = 20; ///Change this number for different design.
+    const count = 40; ///Change this number for different design.
 
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -20,8 +21,9 @@ const sketch = () => {
     return points;
   };
 
-  const points = createGrid();
-  const margin = 300;
+  random.setSeed(615);
+  const points = createGrid().filter(() => random.value() > 0.5);
+  const margin = 120;
 
   return ({ context, width, height }) => {
     context.fillStyle = "white";
@@ -37,7 +39,7 @@ const sketch = () => {
       context.arc(
         x,
         y,
-        10 /*change this number to reduce the size of the circles*/,
+        5 /*change this number to reduce the size of the circles*/,
         0,
         Math.PI * 2,
         false
