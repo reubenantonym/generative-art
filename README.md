@@ -1,5 +1,4 @@
-# Generative Art with JavaScript and
-canvas-sketch
+# Generative Art with JavaScript and canvas-sketch
 This repository contains generative art projects
 created using JavaScript, along with the
 canvas-sketch API, nice-color-palette library, and
